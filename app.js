@@ -7,6 +7,8 @@ require("dotenv").config();
 
 const app = express();
 
+const  PORT = process.env.PORT || 3000;
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -160,8 +162,8 @@ mongoose
       res.redirect("/" + req.body.newList);
     });
 
-    app.listen(3000, function () {
-      console.log("server is started on port 3000");
+    app.listen(PORT, function () {
+      console.log(`server is started on port ${PORT}`);
     });
   })
   .catch((err) => {
