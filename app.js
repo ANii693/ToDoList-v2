@@ -26,7 +26,7 @@ const connectDB = async () => {
 
 // mongoose
 //   .connect(process.env.DB_URL)
-//   .then(async () => {
+//   .then(() => {
 
 connectDB()
   .then(() => {
