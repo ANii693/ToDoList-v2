@@ -14,9 +14,22 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.DB_URL);
+    console.log('MongoDB Connected');
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
 mongoose
   .connect(process.env.DB_URL)
   .then(async () => {
+
+connectDB()
+  .then(() => {
     const itemsSchema = new mongoose.Schema({
       name: String,
     });
